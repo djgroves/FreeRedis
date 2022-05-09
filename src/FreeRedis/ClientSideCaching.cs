@@ -36,8 +36,8 @@ namespace FreeRedis
             readonly RedisClient _cli;
             readonly ClientSideCachingOptions _options;
             IPubSubSubscriber _sub;
-            Dictionary<string, ClusterTrackingInfo> _clusterTrackings = new Dictionary<string, ClusterTrackingInfo>();
-            object _clusterTrackingsLock = new object();
+            readonly Dictionary<string, ClusterTrackingInfo> _clusterTrackings = new Dictionary<string, ClusterTrackingInfo>();
+            object _clusterTrackingsLock = new ();
             class ClusterTrackingInfo
             {
                 public RedisClient Client;
@@ -129,8 +129,7 @@ namespace FreeRedis
                     _dict.Clear();
                     return;
                 }
-                var keys = msg as object[];
-                if (keys != null)
+                if (msg is object[] keys)
                 {
                     foreach (var key in keys)
                         RemoveCache(string.Concat(key));

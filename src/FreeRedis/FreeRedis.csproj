@@ -1,38 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net50;netstandard2.1;netstandard2.0;net45;net40</TargetFrameworks>
-		<AssemblyName>FreeRedis</AssemblyName>
-		<PackageId>FreeRedis</PackageId>
-		<RootNamespace>FreeRedis</RootNamespace>
-		<Version>0.5.2</Version>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageProjectUrl>https://github.com/2881099/FreeRedis</PackageProjectUrl>
-		<Description>FreeRedis is .NET redis client, supports cluster, sentinel, master-slave, pipeline, transaction and connection pool.</Description>
-		<RepositoryUrl>https://github.com/2881099/FreeRedis</RepositoryUrl>
-		<PackageTags>FreeRedis redis-trib cluster rediscluster sentinel</PackageTags>
-		<RepositoryType>git</RepositoryType>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Title>$(AssemblyName)</Title>
-		<IsPackable>true</IsPackable>
-		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-		<WarningLevel>3</WarningLevel>
-		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
-		<DelaySign>false</DelaySign>
+		<OutputType>library</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>FreeRedis.xml</DocumentationFile>
-		<WarningLevel>3</WarningLevel>
-		<NoWarn>1701;1702;1591</NoWarn>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net40'">
-		<DefineConstants>net40</DefineConstants>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' != 'net40'">
-		<DefineConstants>isasync_close</DefineConstants>
+	<PropertyGroup>
+		<DefineConstants>isasync</DefineConstants>
 	</PropertyGroup>
 
 </Project>
